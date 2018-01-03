@@ -6,7 +6,7 @@ body {
   font-family: sans-serif;
 }
 
-.not-found-container {
+.page-not-found-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +19,12 @@ body {
   }  
 
   .content {
+    font-size: 1.2rem;
+  }
+
+  .link {
+    margin: 10px auto;
+    width: fit-content;
     font-size: 1.2rem;
   }
 }

@@ -14,7 +14,7 @@ import Toast from './Toast';
 import PageNotFound from './PageNotFound';
 
 // Log the initial state
-console.log(store.getState());
+// console.log(store.getState());
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
