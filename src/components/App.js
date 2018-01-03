@@ -10,10 +10,11 @@ import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import Login from './auths/Login';
 import Home from './Home';
+import Toast from './Toast';
 import PageNotFound from './PageNotFound';
 
 // Log the initial state
-// console.log(store.getState());
+console.log(store.getState());
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
@@ -64,7 +65,7 @@ class App extends Component {
             }
             
           </BrowserRouter>
-          {/* <Toast /> */}
+          <Toast />
         </div>  
       </Provider>
     );
