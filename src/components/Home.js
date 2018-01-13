@@ -23,9 +23,11 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
+  const { user } = state.authReducer;
+  
   return {
-
-  }; 
+    user
+  };  
 };
 
 export default connect (

@@ -16,12 +16,31 @@ class Auth {
     return Auth.instance;
   }
   
-  /*
-    this methods is called immediately at the very beginning in the auth reducer 
-    to initialize 'user' object in App.jsx. It checks whether 
-    the user signs in previously by looking at localStorage and 
-    it returns either null or an object retrieved from localStorage
-  */
+  /**
+   * 
+   * @param {function} logout
+   * this method is called in App.jsx to register an interceptor to catch 
+   * any 401 unauthorized response and redirect users to the login page
+   */
+  registerAxiosInterceptor(logout) {
+    axios.interceptors.response.use(
+      (response) => {
+        return response;
+      }, (error) => {
+        if (error.response && error.response.status === 401) {
+          logout();
+        }
+        return Promise.reject(error.response);
+      }
+    );
+  }
+
+  /**
+   * this method is called immediately at the very beginning in the auth reducer
+   * to initialize 'user' object in App.jsx. It checks whether
+   * the user signs in previously by looking at localStorage and 
+   * it returns either null or an object retrieved from localStorage 
+   */
   getUserDataFromLocal() {
     let user = null;
     
@@ -34,29 +53,32 @@ class Auth {
     return user;
   }
   
-  /*
-    set auth header in Axios and store auth data in localstorage
-    after succesfully signing in
-  */
+  /**
+   * 
+   * @param {object} response 
+   * set auth header in Axios and store auth data in localstorage
+   * after succesfully signing in
+   */
   onSignedIn(response) {
     localStorage.setItem('auth', JSON.stringify(response.data));
     axios.defaults.headers.common['Authorization'] = "Bearer " + response.data.access_token;
   }
   
 
-  /*
-    delete auth header in axios and clear localStorage
-    after signing out
-  */
+  /**
+   * delete auth header in axios and clear localStorage after signing out
+   */
   onSignedOut() {
     delete axios.defaults.headers.common['Authorization']
     localStorage.clear();
   }
 
-  /*
-    update the new user data in localStorage 
-    after succesfully update user profile in profileActions
-  */
+  /**
+   * 
+   * @param {object} newUserData 
+   * update the new user data in localStorage 
+   * after succesfully update user profile in profileActions
+   */
   onUserProfileChanged(newUserData) {
     const localData = JSON.parse(localStorage.getItem('auth'));
     if(localData) {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
-import store from '../store/store';
-import '../styles/App.css';
 
+import '../styles/App.css';
 import * as Routes from '../constants/routes';
 
 import PublicRoute from './routes/PublicRoute';
@@ -13,63 +12,45 @@ import Home from './Home';
 import Toast from './Toast';
 import PageNotFound from './PageNotFound';
 
-// Log the initial state
-// console.log(store.getState());
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-// const unsubscribe = store.subscribe(() =>
-  // console.log(store.getState())
-// )
+import Auth from '../utils/auth';
+import { logout } from '../actions/authActions';
 
 class App extends Component {
-  state = {
-    user: undefined,  // `undefined` signifies that we don't know yet if we are logged in or not
-  }
-
   componentDidMount() {
-    // initialize the user  
-    const user = store.getState().authReducer.user;
-    this.setState({ user });
-
-    // listen to the user change
-    store.subscribe(() => {
-      const user = store.getState().authReducer.user;
-      this.setState({ user });
-      // console.log('user is', store.getState().authReducer.user);
-    });
+    Auth.registerAxiosInterceptor(this.props.logout);
   }
-
 
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
     
     return (
-      <Provider store={store}>
-        <div>
-          <BrowserRouter>
-            { // If we know for sure whether we are logged-in or not, try to match the route.
-            user !== undefined 
-              ? 
-              <Switch>
-                
-                <PublicRoute path={Routes.LOGIN} component={Login} user={user} />
-                <PrivateRoute path={Routes.HOME} component={Home} user={user} />
-
-                {/* <PrivateRoute path={Routes.BRAND + '/:brandId'} component={Brand} user={user}/> */}
-                
-                <Route path='*' exact={true} component={PageNotFound} />
-
-              </Switch>
-              : <div>loading</div>
-            }
+      <div>
+        <BrowserRouter>
+          <Switch>
             
-          </BrowserRouter>
-          <Toast />
-        </div>  
-      </Provider>
+            <PublicRoute path={Routes.LOGIN} component={Login} user={user} />
+            <PrivateRoute path={Routes.HOME} component={Home} user={user} />
+
+            {/* <PrivateRoute path={Routes.BRAND + '/:brandId'} component={Brand} user={user}/> */}
+            
+            <Route path='*' exact={true} component={PageNotFound} />
+
+          </Switch>
+        </BrowserRouter>
+        <Toast />
+      </div>  
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { user } = state.authReducer;
+  
+  return {
+    user
+  };  
+};
+
+export default connect (
+  mapStateToProps, { logout }
+)(App)

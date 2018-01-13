@@ -16,10 +16,11 @@ const propTypes = {
 const PrivateRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
-    render={props => // props = { match:{...}, history:{...}, location:{...} }
+    render = {props => // props = { match:{...}, history:{...}, location:{...} }
       user
-        ? <Component user={user} {...props} />
-        : <Redirect to={LOGIN} />}
+        ? <Component {...props} />
+        : <Redirect to={LOGIN} /> 
+    }
   />
 );
 

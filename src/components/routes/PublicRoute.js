@@ -18,7 +18,8 @@ const PublicRoute = ({ component: Component, user, ...rest }) => (
     render={props =>
       user
         ? <Redirect to={HOME} />
-        : <Component user={user} {...props} />}
+        : <Component {...props} />
+    }
   />
 );
 
