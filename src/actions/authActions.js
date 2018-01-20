@@ -12,7 +12,7 @@ import {
 } from '../constants/actionTypes';
 
 import Auth from '../utils/auth';
-import Handler from '../utils/handler';
+import Utils from '../utils';
 
 const fakeResponse = 
 { 
@@ -84,7 +84,7 @@ export const login = (requestData) => (dispatch) => {
   //   email,
   //   password
   // }).then(response => {
-  //   const successful = Handler.handleResponse(response);
+  //   const successful = Utils.handleResponse(response);
   //   if (successful) {
   //     Auth.onSignedIn(response);
   //     dispatch(loginSuccess(response.data, response.data.user_data));

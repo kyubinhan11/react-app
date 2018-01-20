@@ -2,15 +2,15 @@
 // import Strings from '../constants/Strings';
 import { toastMessage } from '../actions/toastActions';
 
-class Handler {
+class Utils {
   constructor() {
-    if(!Handler.instance) {
+    if(!Utils.instance) {
       this._handler = {
         toastTimeout: undefined
       };
-      Handler.instance = this;
+      Utils.instance = this;
     }
-    return Handler.instance;
+    return Utils.instance;
   }
 
   toastMessage(openToastMessage, closeToastMessage, timeout) {
@@ -125,7 +125,7 @@ class Handler {
 
 }
 
-const instance = new Handler();
+const instance = new Utils();
 Object.freeze(instance);
 
 export default instance;
