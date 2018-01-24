@@ -11,8 +11,8 @@ import {
   USER_PROFILE_CHANGE
 } from '../constants/actionTypes';
 
-import Auth from '../utils/auth';
-import Utils from '../utils';
+import Auth from '../handlers/auth';
+import Handlers from '../handlers';
 
 const fakeResponse = 
 { 
@@ -84,7 +84,7 @@ export const login = (requestData) => (dispatch) => {
   //   email,
   //   password
   // }).then(response => {
-  //   const successful = Utils.handleResponse(response);
+  //   const successful = Handlers.handleResponse(response);
   //   if (successful) {
   //     Auth.onSignedIn(response);
   //     dispatch(loginSuccess(response.data, response.data.user_data));

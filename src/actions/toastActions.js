@@ -3,7 +3,7 @@ import {
   OPEN_TOAST_MESSAGE,
   CLOSE_TOAST_MESSAGE
 } from '../constants/actionTypes';
-import Utils from '../utils';
+import Handlers from '../handlers';
 
 export const openToastMessage = (success, message) => {
   return {
@@ -30,11 +30,11 @@ const toastMessage = (success, message, timeout = 4000) => (dispatch) => {
     dispatch(closeToastMessage());
   }
 
-  Utils.toastMessage(open, close, timeout);
+  Handlers.toastMessage(open, close, timeout);
 }
 
 export const toastErrorMessage = (err) => (dispatch) => {
-  const errorMessage = Utils.handleErrorMessage(err);
+  const errorMessage = Handlers.handleErrorMessage(err);
   dispatch(toastMessage(false, errorMessage));
 }
 

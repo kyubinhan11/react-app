@@ -5,7 +5,7 @@ import {
 } from '../constants/actionTypes';
 import * as ReducerTypes from '../constants/reducerTypes';
 
-import Auth from '../utils/auth';
+import Auth from '../handlers/auth';
 
 import authReducer from './authReducer';
 import toastReducer from './toastReducer';

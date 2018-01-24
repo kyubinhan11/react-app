@@ -6,7 +6,7 @@ import {
   USER_PROFILE_CHANGE
 } from '../constants/actionTypes';
 
-import Auth from '../utils/auth';
+import Auth from '../handlers/auth';
 
 const authReducer = (state = {
   isFetching: false,

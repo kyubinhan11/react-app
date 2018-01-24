@@ -2,15 +2,15 @@
 // import Strings from '../constants/Strings';
 import { toastMessage } from '../actions/toastActions';
 
-class Utils {
+class Handlers {
   constructor() {
-    if(!Utils.instance) {
+    if(!Handlers.instance) {
       this._handler = {
         toastTimeout: undefined
       };
-      Utils.instance = this;
+      Handlers.instance = this;
     }
-    return Utils.instance;
+    return Handlers.instance;
   }
 
   toastMessage(openToastMessage, closeToastMessage, timeout) {
@@ -30,7 +30,25 @@ class Utils {
   }
 
   handleErrorMessage(err) {
+    // let message = Strings.UNEXPECTED_ERROR;
     
+    // if(err instanceof Object) {
+    //   const res = err.response;
+    //   const status = err.status;
+      
+    //   // got the status of 200
+    //   if (res && res.data && res.data.message) {
+    //     return res.data.message;
+    //   } else if (status) { // able to communicate with the server but errors occured
+    //     if (status === 404) {
+    //       return Strings.STATUS404;
+    //     } else if (status === 500) {
+    //       return Strings.STATUS500;
+    //     }
+    //   }  
+    // }
+     
+    // return message; 
   }
 
   validateEmail(email, errors) {
@@ -115,7 +133,7 @@ class Utils {
 
 }
 
-const instance = new Utils();
+const instance = new Handlers();
 Object.freeze(instance);
 
 export default instance;
