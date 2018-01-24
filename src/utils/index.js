@@ -30,17 +30,7 @@ class Utils {
   }
 
   handleErrorMessage(err) {
-    // if (err.response) {
-    //   if (err.response.data) {
-    //     return err.response.data.message;
-    //   } else {
-    //     return err.response.message;
-    //   }
-    // } else if (err.message) {
-    //   return err.message;
-    // } else {
-    //   return "An unexpected error occurred";
-    // } 
+    
   }
 
   validateEmail(email, errors) {
