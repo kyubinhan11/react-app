@@ -31,10 +31,16 @@ export class App extends Component {
             <PublicRoute path={Routes.LOGIN} component={Login} user={user} />
             <PrivateRoute path={Routes.HOME} component={Home} user={user} />
 
-            {/* <PrivateRoute path={Routes.BRAND + '/:brandId'} component={Brand} user={user}/> */}
+            
+            {/* An example of nested routes 
+              https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#serving-apps-with-client-side-routing
+              <PrivateRoute path={`${match.url}/:topicId`} component={Topic} user={user}/>
+              <PrivateRoute exact path={match.url} component={TopicPage} user={user}/>
+            */}
             
             <Route path='/' exact render={() => (<Redirect to={Routes.LOGIN}/>)} />
             <Route path='*' exact component={PageNotFound} />
+
           </Switch>
         </BrowserRouter>
         <Toast />
