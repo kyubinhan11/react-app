@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-import store from './store/store';
+import store from './store';
 
 // Log the initial state
 // console.log(store.getState());

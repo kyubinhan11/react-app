@@ -33,8 +33,8 @@ export class App extends Component {
 
             {/* <PrivateRoute path={Routes.BRAND + '/:brandId'} component={Brand} user={user}/> */}
             
-            <Route path='*' exact={true} component={PageNotFound} />
-
+            <Route path='/' exact render={() => (<Redirect to={Routes.LOGIN}/>)} />
+            <Route path='*' exact component={PageNotFound} />
           </Switch>
         </BrowserRouter>
         <Toast />
