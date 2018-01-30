@@ -41,7 +41,7 @@ class Auth {
    * the user signs in previously by looking at localStorage and 
    * it returns either null or an object retrieved from localStorage 
    */
-  getUserDataFromLocal() {
+  getUserDataFromLocalStorage() {
     let user = null;
     
     const localData = JSON.parse(localStorage.getItem('auth'));
@@ -77,7 +77,7 @@ class Auth {
    * 
    * @param {object} newUserData 
    * update the new user data in localStorage 
-   * after succesfully update user profile in profileActions
+   * after succesfully update user profile 
    */
   onUserProfileChanged(newUserData) {
     const localData = JSON.parse(localStorage.getItem('auth'));

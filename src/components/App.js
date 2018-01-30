@@ -15,7 +15,7 @@ import PageNotFound from './PageNotFound';
 import Auth from '../handlers/auth';
 import { logout } from '../actions/authActions';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     Auth.registerAxiosInterceptor(this.props.logout);
   }

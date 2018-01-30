@@ -10,13 +10,14 @@ import Auth from '../handlers/auth';
 
 const authReducer = (state = {
   isFetching: false,
-  user: Auth.getUserDataFromLocal(),
+  user: Auth.getUserDataFromLocalStorage(),
   success: false,
 }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST: 
       return {
-        ...state, 
+        ...state,
+        success: false,
         isFetching: true,
       }
     case LOGIN_SUCCESS: 

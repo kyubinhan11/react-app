@@ -33,7 +33,7 @@ const fakeResponse =
   }
 };
 
-const loginSuccess = (data, user) => {
+export const loginSuccess = (data, user) => {
   return {
     name: AUTH,
     type: LOGIN_SUCCESS,
@@ -42,14 +42,14 @@ const loginSuccess = (data, user) => {
   }
 }
 
-const loginRequest = () => {
+export const loginRequest = () => {
   return {
     name: AUTH,
     type: LOGIN_REQUEST,
   }
 }
 
-const loginError = (errorMessage) => {
+export const loginError = (errorMessage) => {
   return {
     name: AUTH,
     type: LOGIN_ERROR,
@@ -57,7 +57,7 @@ const loginError = (errorMessage) => {
   }
 }
 
-const logoutSuccess = () => {
+export const logoutSuccess = () => {
   return {
     name: AUTH,
     type: LOGOUT_SUCCESS
