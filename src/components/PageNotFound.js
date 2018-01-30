@@ -11,11 +11,11 @@ class PageNotFound extends Component {
 
   render() {
     return (
-      <div className="page-not-found-container">
+      <div className="page-not-found">
         <div>
-          <div className="title">Error 404</div>
-          <div className="content">Woops. Looks like this page doesn't exist </div>
-          <div className="link">
+          <div className="page-not-found__title">Error 404</div>
+          <div className="page-not-found__content">Woops. Looks like this page doesn't exist </div>
+          <div className="page-not-found__link">
             <Link to={HOME}> Go to home </Link>
           </div>
         </div>

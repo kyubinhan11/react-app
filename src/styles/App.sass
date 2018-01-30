@@ -1,0 +1,32 @@
+@import 'styles/mixins.scss'
+
+body 
+  margin: 0
+  padding: 0
+  font-family: sans-serif
+
+.page-not-found 
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100vh
+
+  +element('title') 
+    text-align: center
+    font-size: 3rem
+    margin-bottom: 20px
+
+  +element('content') 
+    font-size: 1.2rem
+
+  +element('link')
+    margin: 10px auto
+    width: fit-content
+    font-size: 1.2rem
+  
+    +modifier('bolder') 
+      border: 1px solid  
+    
+  
+
+
